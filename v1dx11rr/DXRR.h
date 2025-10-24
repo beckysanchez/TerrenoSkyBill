@@ -43,6 +43,18 @@ public:
 	BillboardRR *billboard;
 	Camara *camara;
 	ModeloRR* model;
+
+	//modelos
+	ModeloRR* arco;
+	ModeloRR* barril;
+	ModeloRR* bench;
+	ModeloRR* container;
+	ModeloRR* composta;
+	ModeloRR* fuente;
+	ModeloRR* air;
+	ModeloRR* slide;
+	ModeloRR* lantern;
+	ModeloRR* tronco;
 	
 	float izqder;
 	float arriaba;
@@ -80,9 +92,19 @@ public:
 		terreno = new TerrenoRR(300, 300, d3dDevice, d3dContext);
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"sky2.jpg");
 		billboard = new BillboardRR(L"Assets/Billboards/fuego-anim.png",L"Assets/Billboards/fuego-anim-normal.png", d3dDevice, d3dContext, 5);
-		model = new ModeloRR(d3dDevice, d3dContext, "Assets/Cofre/Cofre.obj", L"Assets/Cofre/Cofre-color.png", L"Assets/Cofre/Cofre-spec.png", 0, 0);
+		model = new ModeloRR(d3dDevice, d3dContext, "Assets/Cofre/Cofre.obj", L"Assets/Cofre/Cofre-color.png", L"Assets/Cofre/Cofre-spec.png", 0, 0,0);
 
-		
+		//instancia?
+		arco= new ModeloRR(d3dDevice, d3dContext, "Assets/arco/arco.obj", L"Assets/arco/wood.png", L"Assets/arco/wood.png", 0, 0,0);
+		barril = new ModeloRR(d3dDevice, d3dContext, "Assets/barril-medieval/barril-medieval.obj", L"Assets/barril-medieval/barrel_basecolor.png", L"Assets/barril-medieval/barrel_basecolor.png",0, 0, 0);
+		bench = new ModeloRR(d3dDevice, d3dContext, "Assets/bench/objBench.obj", L"Assets/bench/germany010.png", L"Assets/bench/germany010.png", 0,0, 0);
+		container = new ModeloRR(d3dDevice, d3dContext, "Assets/container/CargoContainer.obj", L"Assets/container/Cargo Container_BaseColor.png", L"Assets/container/Cargo Container_BaseColor.png",0, 0, 0);
+		composta = new ModeloRR(d3dDevice, d3dContext, "Assets/compost-bags/compost_bags_4k.obj", L"Assets/compost-bags/compost_bags_diff_4k.png", L"Assets/compost-bags/compost_bags_diff_4k.png", 0,0, 0);
+		fuente = new ModeloRR(d3dDevice, d3dContext, "Assets/fuente/fuente.obj", L"Assets/fuente/comb.png", L"Assets/fuente/comb.png", 0,0, 0);
+		air = new ModeloRR(d3dDevice, d3dContext, "Assets/hot-airbaloon/hotairbaloon.obj", L"Assets/hot-airbaloon/hotairb.png", L"Assets/hot-airbaloon/hotairb.png", 0,0, 0);
+		slide = new ModeloRR(d3dDevice, d3dContext, "Assets/kids-slide/kids-slide.obj", L"Assets/kids-slide/slide_basecolor.png", L"Assets/kids-slide/slide_basecolor.png", 0,0, 0);
+		lantern= new ModeloRR(d3dDevice, d3dContext, "Assets/lantern/Lantern.obj", L"Assets/lantern/Lantern_Diffuse.png", L"Assets/lantern/Lantern_Diffuse.png",0,0, 0);
+		tronco = new ModeloRR(d3dDevice, d3dContext, "Assets/tronco-kand/kand.obj", L"Assets/tronco-kand/wood.png", L"Assets/tronco-kand/wood.png",0, 0, 0);
 
 		
 	}
@@ -279,8 +301,34 @@ public:
 		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,
 			-11, -78, 4, 5, uv1, uv2, uv3, uv4, frameBillboard);
 
+		//posicion de objetos
+
+		D3DXVECTOR3 arcopos(72.0f, terreno->Superficie(80, 20), -59.0f);
+		D3DXVECTOR3 barrilpos(72.0f, terreno->Superficie(60, 20), -59.0f);
+		D3DXVECTOR3 benchpos(72.0f, terreno->Superficie(100, 20), -59.0f);
+		D3DXVECTOR3 compostpos(72.0f, terreno->Superficie(40, 20), -59.0f);
+		D3DXVECTOR3 containerpos(72.0f, terreno->Superficie(20, 20), -59.0f);
+		D3DXVECTOR3 airpos(72.0f, terreno->Superficie(0, 20), -59.0f);
+		D3DXVECTOR3 fuentepos(72.0f, terreno->Superficie(120, 20), -59.0f);
+		D3DXVECTOR3 slidepos(72.0f, terreno->Superficie(140, 20), -59.0f);
+		D3DXVECTOR3 lanternpos(72.0f, terreno->Superficie(160, 20), -59.0f);
+		D3DXVECTOR3 troncopos(72.0f, terreno->Superficie(180, 20), -59.0f);
+
+
 		//TurnOffAlphaBlending();
-		model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1);
+		// draw de objetos
+		//model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1);
+		arco->Draw(camara->vista, camara->proyeccion,arcopos , camara->posCam, 30.0f, 0, 'A', 1);
+		barril->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', .5);
+		//bench->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//composta->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//container->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//air->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//fuente->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//slide->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//lantern->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		//tronco->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		
 
 		swapChain->Present( 1, 0 );
 	}
