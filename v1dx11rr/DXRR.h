@@ -319,16 +319,16 @@ public:
 
 		//posicion de objetos
 
-		D3DXVECTOR3 arcopos(-1.83f, terreno->Superficie(-1.83f, -30.41f), -30.41f);
-		D3DXVECTOR3 barrilpos(3.0f, terreno->Superficie(3.0f, -98.0f), 98.0f);
+		D3DXVECTOR3 arcopos(-67.16f, terreno->Superficie(-67.16f, 15.01f), 15.01f);
+		D3DXVECTOR3 barrilpos(3.0f, terreno->Superficie(3.0f, 98.0f), 98.0f);
 		D3DXVECTOR3 benchpos(73.0f, terreno->Superficie(73.0f, -43.63f), -43.63f);
 		D3DXVECTOR3 anunciopos(125.0f, terreno->Superficie(125.0f, -57.0f), -57.0f);
 		D3DXVECTOR3 containerpos(128.18f, terreno->Superficie(128.18f, -117.99f), -117.99f);
-		D3DXVECTOR3 monkeybarpos(6.03f, terreno->Superficie(6.03f, -59.0f), -59.0f);
+		D3DXVECTOR3 monkeybarpos(40.73f, terreno->Superficie(40.73f, 87.76f), 87.76f);
 		D3DXVECTOR3 fuentepos(-130.45f, terreno->Superficie(-130.45f, 88.03f), 88.03f);
 		D3DXVECTOR3 slidepos(68.25f, terreno->Superficie(68.25f, 78.43f), 78.43f);
-		D3DXVECTOR3 lanternpos(-58.64f, terreno->Superficie(-58.64f, 70.26f), 70.26f);
-		D3DXVECTOR3 streetlamppos(84.03f, terreno->Superficie(84.03f, -58.72f), -58.72f);
+		D3DXVECTOR3 lanternpos(-74.66f, terreno->Superficie(-74.66f, -25.27f), -25.27f);
+		D3DXVECTOR3 streetlamppos(87.13f, terreno->Superficie(87.13f, -43.43f), -43.43f);
 
 
 		//TurnOffAlphaBlending();
@@ -339,7 +339,7 @@ public:
 		bench->Draw(camara->vista, camara->proyeccion, benchpos, camara->posCam, 30.0f, 0, 'A', 1);
 		anuncio->Draw(camara->vista, camara->proyeccion, anunciopos, camara->posCam, 30.0f, 0, 'A', 3);
 		container->Draw(camara->vista, camara->proyeccion, containerpos, camara->posCam, 30.0f, 0, 'A', 4);
-		monkeybar->Draw(camara->vista, camara->proyeccion, monkeybarpos, camara->posCam, 30.0f, 0, 'A', 4);
+		monkeybar->Draw(camara->vista, camara->proyeccion, monkeybarpos, camara->posCam, 30.0f, 0, 'A', 2);
 		fuente->Draw(camara->vista, camara->proyeccion, fuentepos, camara->posCam, 30.0f, 0, 'A', 1);
 		slide->Draw(camara->vista, camara->proyeccion, slidepos, camara->posCam, 30.0f, 180, 'A', .5f);
 		lantern->Draw(camara->vista, camara->proyeccion, lanternpos, camara->posCam, 30.0f, 0, 'A', 1);
