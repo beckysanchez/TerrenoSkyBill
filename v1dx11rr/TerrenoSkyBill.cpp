@@ -187,6 +187,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
             }
 
 
+
             if (keyboardData[DIK_W] & 0x80) {
                 dxrr->vel = 3.f;
             }

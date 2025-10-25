@@ -49,12 +49,12 @@ public:
 	ModeloRR* barril;
 	ModeloRR* bench;
 	ModeloRR* container;
-	ModeloRR* composta;
+	ModeloRR* anuncio;
 	ModeloRR* fuente;
-	ModeloRR* air;
+	ModeloRR* streetlamp;
 	ModeloRR* slide;
 	ModeloRR* lantern;
-	ModeloRR* tronco;
+	ModeloRR* monkeybar;
 	
 	float izqder;
 	float arriaba;
@@ -99,12 +99,12 @@ public:
 		barril = new ModeloRR(d3dDevice, d3dContext, "Assets/barril-medieval/barril-medieval.obj", L"Assets/barril-medieval/barrel_basecolor.png", L"Assets/barril-medieval/barrel_basecolor.png",0, 0, 0);
 		bench = new ModeloRR(d3dDevice, d3dContext, "Assets/bench/objBench.obj", L"Assets/bench/germany010.png", L"Assets/bench/germany010.png", 0,0, 0);
 		container = new ModeloRR(d3dDevice, d3dContext, "Assets/container/CargoContainer.obj", L"Assets/container/Cargo Container_BaseColor.png", L"Assets/container/Cargo Container_BaseColor.png",0, 0, 0);
-		composta = new ModeloRR(d3dDevice, d3dContext, "Assets/compost-bags/compost_bags_4k.obj", L"Assets/compost-bags/compost_bags_diff_4k.png", L"Assets/compost-bags/compost_bags_diff_4k.png", 0,0, 0);
+		anuncio = new ModeloRR(d3dDevice, d3dContext, "Assets/anuncio/anuncio.obj", L"Assets/anuncio/billboard_BaseColor.png", L"Assets/anuncio/billboard_Metallic.png", 0,0, 0);
 		fuente = new ModeloRR(d3dDevice, d3dContext, "Assets/fuente/fuente.obj", L"Assets/fuente/comb.png", L"Assets/fuente/comb.png", 0,0, 0);
-		air = new ModeloRR(d3dDevice, d3dContext, "Assets/hot-airbaloon/hotairbaloon.obj", L"Assets/hot-airbaloon/hotairb.png", L"Assets/hot-airbaloon/hotairb.png", 0,0, 0);
+		monkeybar = new ModeloRR(d3dDevice, d3dContext, "Assets/monkeybar/monkey_bar.obj", L"Assets/monkeybar/monkey_bar_monkey_bar_BaseColor.png", L"Assets/monkeybar/monkey_bar_monkey_bar_AO.png", 0,0, 0);
 		slide = new ModeloRR(d3dDevice, d3dContext, "Assets/kids-slide/kids-slide.obj", L"Assets/kids-slide/slide_basecolor.png", L"Assets/kids-slide/slide_basecolor.png", 0,0, 0);
 		lantern= new ModeloRR(d3dDevice, d3dContext, "Assets/lantern/Lantern.obj", L"Assets/lantern/Lantern_Diffuse.png", L"Assets/lantern/Lantern_Diffuse.png",0,0, 0);
-		tronco = new ModeloRR(d3dDevice, d3dContext, "Assets/tronco-kand/kand.obj", L"Assets/tronco-kand/wood.png", L"Assets/tronco-kand/wood.png",0, 0, 0);
+		streetlamp = new ModeloRR(d3dDevice, d3dContext, "Assets/streetlamp/streetlamp.obj", L"Assets/streetlamp/StreetLamp_01 - Default_BaseColor.png", L"Assets/streetlamp/StreetLamp_01 - Default_Metallic.png",0, 0, 0);
 
 		
 	}
@@ -284,6 +284,22 @@ public:
 		if( d3dContext == 0 )
 			return;
 
+		if (GetAsyncKeyState('M') & 0x0001) // 0x0001 = solo al presionar (no mantener)
+		{
+			// Obtener las coordenadas de la cámara
+			float x = camara->posCam.x;
+			float y = camara->posCam.y;
+			float z = camara->posCam.z;
+
+			// Crear texto para el MessageBox
+			wchar_t mensaje[128];
+			swprintf_s(mensaje, L"Coordenadas de la cámara:\nX: %.2f\nY: %.2f\nZ: %.2f", x, y, z);
+
+			// Mostrar en pantalla
+			MessageBox(hWnd, mensaje, L"Posición de la cámara", MB_OK | MB_ICONINFORMATION);
+		}
+
+
 		float clearColor[4] = { 0, 0, 0, 1.0f };
 		d3dContext->ClearRenderTargetView( backBufferTarget, clearColor );
 		d3dContext->ClearDepthStencilView( depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
@@ -303,31 +319,31 @@ public:
 
 		//posicion de objetos
 
-		D3DXVECTOR3 arcopos(72.0f, terreno->Superficie(72.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 barrilpos(100.0f, terreno->Superficie(100.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 benchpos(172.0f, terreno->Superficie(172.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 compostpos(0.0f, terreno->Superficie(0, -20), -59.0f);
-		D3DXVECTOR3 containerpos(40.0f, terreno->Superficie(40.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 airpos(5.0f, terreno->Superficie(5.0f, -20), -59.0f);
-		D3DXVECTOR3 fuentepos(120.0f, terreno->Superficie(120.0f, 60.0f), -59.0f);
-		D3DXVECTOR3 slidepos(135.0f, terreno->Superficie(135.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 lanternpos(20.0f, terreno->Superficie(20.0f, -59.0f), -59.0f);
-		D3DXVECTOR3 troncopos(35.0f, terreno->Superficie(35.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 arcopos(-1.83f, terreno->Superficie(-1.83f, -30.41f), -30.41f);
+		D3DXVECTOR3 barrilpos(3.0f, terreno->Superficie(3.0f, -98.0f), 98.0f);
+		D3DXVECTOR3 benchpos(73.0f, terreno->Superficie(73.0f, -43.63f), -43.63f);
+		D3DXVECTOR3 anunciopos(125.0f, terreno->Superficie(125.0f, -57.0f), -57.0f);
+		D3DXVECTOR3 containerpos(128.18f, terreno->Superficie(128.18f, -117.99f), -117.99f);
+		D3DXVECTOR3 monkeybarpos(6.03f, terreno->Superficie(6.03f, -59.0f), -59.0f);
+		D3DXVECTOR3 fuentepos(-130.45f, terreno->Superficie(-130.45f, 88.03f), 88.03f);
+		D3DXVECTOR3 slidepos(68.25f, terreno->Superficie(68.25f, 78.43f), 78.43f);
+		D3DXVECTOR3 lanternpos(-58.64f, terreno->Superficie(-58.64f, 70.26f), 70.26f);
+		D3DXVECTOR3 streetlamppos(84.03f, terreno->Superficie(84.03f, -58.72f), -58.72f);
 
 
 		//TurnOffAlphaBlending();
 		// draw de objetos
 		//model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1);
-		arco->Draw(camara->vista, camara->proyeccion,arcopos , camara->posCam, 30.0f, 0, 'A', 1);
-		barril->Draw(camara->vista, camara->proyeccion, barrilpos, camara->posCam, 30.0f, 0, 'A', .2f);
-		//bench->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		composta->Draw(camara->vista, camara->proyeccion, compostpos, camara->posCam, 30.0f, 0, 'A', 1);
+		arco->Draw(camara->vista, camara->proyeccion,arcopos , camara->posCam, 30.0f, 45.0f, 'A', 1);
+		barril->Draw(camara->vista, camara->proyeccion, barrilpos, camara->posCam, 30.0f, 0, 'A', .1f);
+		bench->Draw(camara->vista, camara->proyeccion, benchpos, camara->posCam, 30.0f, 0, 'A', 1);
+		anuncio->Draw(camara->vista, camara->proyeccion, anunciopos, camara->posCam, 30.0f, 0, 'A', 3);
 		container->Draw(camara->vista, camara->proyeccion, containerpos, camara->posCam, 30.0f, 0, 'A', 4);
-		//air->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		monkeybar->Draw(camara->vista, camara->proyeccion, monkeybarpos, camara->posCam, 30.0f, 0, 'A', 4);
 		fuente->Draw(camara->vista, camara->proyeccion, fuentepos, camara->posCam, 30.0f, 0, 'A', 1);
-		slide->Draw(camara->vista, camara->proyeccion, slidepos, camara->posCam, 30.0f, 0, 'A', .5f);
+		slide->Draw(camara->vista, camara->proyeccion, slidepos, camara->posCam, 30.0f, 180, 'A', .5f);
 		lantern->Draw(camara->vista, camara->proyeccion, lanternpos, camara->posCam, 30.0f, 0, 'A', 1);
-		tronco->Draw(camara->vista, camara->proyeccion, troncopos, camara->posCam, 30.0f, 0, 'A', 1);
+		streetlamp->Draw(camara->vista, camara->proyeccion, streetlamppos, camara->posCam, 30.0f, 0, 'A', 1);
 		
 
 		swapChain->Present( 1, 0 );
