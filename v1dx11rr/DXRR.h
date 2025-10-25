@@ -303,31 +303,31 @@ public:
 
 		//posicion de objetos
 
-		D3DXVECTOR3 arcopos(72.0f, terreno->Superficie(80, 20), -59.0f);
-		D3DXVECTOR3 barrilpos(72.0f, terreno->Superficie(60, 20), -59.0f);
-		D3DXVECTOR3 benchpos(72.0f, terreno->Superficie(100, 20), -59.0f);
-		D3DXVECTOR3 compostpos(72.0f, terreno->Superficie(40, 20), -59.0f);
-		D3DXVECTOR3 containerpos(72.0f, terreno->Superficie(20, 20), -59.0f);
-		D3DXVECTOR3 airpos(72.0f, terreno->Superficie(0, 20), -59.0f);
-		D3DXVECTOR3 fuentepos(72.0f, terreno->Superficie(120, 20), -59.0f);
-		D3DXVECTOR3 slidepos(72.0f, terreno->Superficie(140, 20), -59.0f);
-		D3DXVECTOR3 lanternpos(72.0f, terreno->Superficie(160, 20), -59.0f);
-		D3DXVECTOR3 troncopos(72.0f, terreno->Superficie(180, 20), -59.0f);
+		D3DXVECTOR3 arcopos(72.0f, terreno->Superficie(72.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 barrilpos(100.0f, terreno->Superficie(100.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 benchpos(172.0f, terreno->Superficie(172.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 compostpos(0.0f, terreno->Superficie(0, -20), -59.0f);
+		D3DXVECTOR3 containerpos(40.0f, terreno->Superficie(40.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 airpos(5.0f, terreno->Superficie(5.0f, -20), -59.0f);
+		D3DXVECTOR3 fuentepos(120.0f, terreno->Superficie(120.0f, 60.0f), -59.0f);
+		D3DXVECTOR3 slidepos(135.0f, terreno->Superficie(135.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 lanternpos(20.0f, terreno->Superficie(20.0f, -59.0f), -59.0f);
+		D3DXVECTOR3 troncopos(35.0f, terreno->Superficie(35.0f, -59.0f), -59.0f);
 
 
 		//TurnOffAlphaBlending();
 		// draw de objetos
 		//model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1);
 		arco->Draw(camara->vista, camara->proyeccion,arcopos , camara->posCam, 30.0f, 0, 'A', 1);
-		barril->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', .5);
+		barril->Draw(camara->vista, camara->proyeccion, barrilpos, camara->posCam, 30.0f, 0, 'A', .2f);
 		//bench->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//composta->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//container->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		composta->Draw(camara->vista, camara->proyeccion, compostpos, camara->posCam, 30.0f, 0, 'A', 1);
+		container->Draw(camara->vista, camara->proyeccion, containerpos, camara->posCam, 30.0f, 0, 'A', 4);
 		//air->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//fuente->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//slide->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//lantern->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
-		//tronco->Draw(camara->vista, camara->proyeccion, arcopos, camara->posCam, 30.0f, 0, 'A', 1);
+		fuente->Draw(camara->vista, camara->proyeccion, fuentepos, camara->posCam, 30.0f, 0, 'A', 1);
+		slide->Draw(camara->vista, camara->proyeccion, slidepos, camara->posCam, 30.0f, 0, 'A', .5f);
+		lantern->Draw(camara->vista, camara->proyeccion, lanternpos, camara->posCam, 30.0f, 0, 'A', 1);
+		tronco->Draw(camara->vista, camara->proyeccion, troncopos, camara->posCam, 30.0f, 0, 'A', 1);
 		
 
 		swapChain->Present( 1, 0 );
