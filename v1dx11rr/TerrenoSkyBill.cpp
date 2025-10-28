@@ -220,7 +220,6 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
             if (gamePad->IsConnected())
             {
 
-
                 float grados = (float)gamePad->GetState().Gamepad.sThumbRX / 32767.0;
 
                 if (grados > 0.19 || grados < -0.19) dxrr->izqder = grados / 95;
@@ -248,7 +247,6 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
                 else {
                     dxrr->lateral = 0.0f;
                 }
-
 
             }
 
